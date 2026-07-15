@@ -130,8 +130,8 @@ const script = String.raw`<script>
     const list = document.querySelector('.explorer-ul')
     if (!list || list.querySelector('.folder-container, a.nav-file-title')) return
 
-    document.dispatchEvent(new CustomEvent('render', {
-      detail: { url: location.pathname.replace(/^\//, '') }
+    document.dispatchEvent(new CustomEvent('nav', {
+      detail: { url: document.body.dataset.slug || 'index' }
     }))
   }
 
