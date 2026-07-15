@@ -37,7 +37,7 @@ jobs:
       - name: Install Quartz plugins
         run: |
           for attempt in 1 2 3; do
-            npx quartz plugin install && break
+            node ./quartz/bootstrap-cli.mjs plugin install && break
 
             if [ "$attempt" -eq 3 ]; then
               echo "Quartz plugin installation failed after 3 attempts."
@@ -52,7 +52,7 @@ jobs:
         run: node scripts/prepare-content.mjs
 
       - name: Build Quartz
-        run: npx quartz build
+        run: node ./quartz/bootstrap-cli.mjs build
 
       - name: Enhance Mixa-style tabs
         run: node scripts/enhance-tabs.mjs
